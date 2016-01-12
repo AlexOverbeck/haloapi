@@ -1,7 +1,13 @@
-form action='/' method='post'
-  label for='gamertag' Gamer Tag
-  input type='text' name='gamertag' placeholder='Enter Gamer Tag' required=true
-  label for='email' Email
-  input type='email' name='email' placeholder='example@email.com' required=true
+doctype html
+html
+  head
+    title Slim Examples
+  body
+    form action='/' method='post'
+      label for='gamertag' Gamer Tag
+      input type='text' name='gamertag' placeholder='Enter Gamer Tag' required=true
+      label for='email' Email
+      input type='email' name='email' placeholder='example@email.com' required=true
+      button Submit
 
-.data= @data.first
+  .data= @data.first

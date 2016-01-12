@@ -2,7 +2,8 @@ require 'net/http'
 require 'json'
 
 class Halo
-  def self.get_api
+  API_KEY = ENV['HALO_API_KEY']
+  def self.get_last_match
     player = 'TheInternets'
     key = '1f81e269a1c54e46a43ce766f35eccb0'
     uri = URI("https://www.haloapi.com/stats/h5/players/#{player}/matches")
