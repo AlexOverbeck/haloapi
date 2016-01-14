@@ -2,15 +2,20 @@ require 'net/http'
 require 'json'
 
 class Halo
-  API_KEY = ENV['HALO_API_KEY']
-  def self.get_last_match
-    player = 'TheInternets'
-    key = '1f81e269a1c54e46a43ce766f35eccb0'
-    uri = URI("https://www.haloapi.com/stats/h5/players/#{player}/matches")
+  def self.get_last_match_for_player(player)
+    url = "https://www.haloapi.com/stats/h5/players/#{player}/matches"
+    query = { count: 1 }
+    response = make_request(url, query)
+    data = JSON.parse(response.body)
 
-    uri.query = URI.encode_www_form({
-      count: '1'
-    })
+    data['Results']
+  end
+
+  def self.make_request(url, query)
+    key = '1f81e269a1c54e46a43ce766f35eccb0'
+    uri = URI(url)
+
+    uri.query = URI.encode_www_form(query)
 
     request = Net::HTTP::Get.new(uri.request_uri)
     request['Ocp-Apim-Subscription-Key'] = key
@@ -19,8 +24,8 @@ class Halo
       http.request(request)
     end
 
-    data = JSON.parse(response.body)
-
-    data['Results']
+    response
   end
+  private_class_method :make_request
+
 end

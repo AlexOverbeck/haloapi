@@ -1,13 +1,11 @@
 doctype html
 html
   head
-    title Slim Examples
+    title Halo Api Test
   body
-    form action='/' method='post'
+    form action='/last_match' method='post'
       label for='gamertag' Gamer Tag
       input type='text' name='gamertag' placeholder='Enter Gamer Tag' required=true
-      label for='email' Email
-      input type='email' name='email' placeholder='example@email.com' required=true
       button Submit
 
   .data= @data.first
