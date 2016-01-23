@@ -1,11 +1,6 @@
-doctype html
-html
-  head
-    title Halo Api Test
-  body
-    form action='/last_match' method='post'
-      label for='gamertag' Gamer Tag
-      input type='text' name='gamertag' placeholder='Enter Gamer Tag' required=true
-      button Submit
+form action='/last_match' method='post'
+  label for='gamertag' Gamer Tag
+  input type='text' name='gamertag' placeholder='Enter Gamer Tag' required=true
+  button Submit
 
-  .data= @data.first
+.data= @data.first
