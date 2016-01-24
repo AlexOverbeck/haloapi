@@ -11,6 +11,8 @@ section
     tbody
       - @matches.each_with_index do |match, index|
         tr
-          td= GameBaseVariant.find(match['GameBaseVariantId']).name
+          td
+            img.game-image src=GameBaseVariant.find(match['GameBaseVariantId']).iconUrl
+            = GameBaseVariant.find(match['GameBaseVariantId']).name
           td Row #{index+1} Cell 2
           td Row #{index+1} Cell 3
