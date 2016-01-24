@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'sinatra/reloader' if development?
 require './halo'
 require 'csv'
 require 'pry'

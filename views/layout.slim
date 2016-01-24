@@ -4,4 +4,15 @@ html
     title Halo Api Test
     link rel='stylesheet' href='/stylesheets/application.css'
   body
-    == yield
+    header.navigation role='banner'
+      .navigation-wrapper
+        a.logo href='/'
+          img src='https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png' alt='Logo Image'
+        .navigation-tools
+          .search-bar
+            form action='/last_match' method='post'
+              input type='text' name='gamertag' placeholder='Enter Gamertag'
+              button
+                img src='https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png' alt='Search Icon'
+    section
+      == yield
