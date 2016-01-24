@@ -1,6 +1,13 @@
 var HaloApi = {
   init: function() {
-    console.log('javascript works.')
+    this.autoComplete.init();
+  },
+  autoComplete: {
+    init: function() {
+      $('.gamertag').on('keyup', function(){
+        console.log($(this))
+      });
+    }
   }
 }
 
