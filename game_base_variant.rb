@@ -1,5 +1,6 @@
 class GameBaseVariant
   attr_accessor :name, :internalName, :iconUrl, :supportedGameModes, :id, :contentId
+
   VARIANTS = [
     {
       name: "Strongholds",

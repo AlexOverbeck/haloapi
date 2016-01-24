@@ -6,13 +6,23 @@ section
     thead
       tr
         th Game Type
-        th Header Cell 2
-        th Header Cell 3
+        th Kills
+        th Deaths
+        th Assists
+        th Date Time
     tbody
       - @matches.each_with_index do |match, index|
+        - base_variant = GameBaseVariant.find(match['GameBaseVariantId'])
+        - variant = GameVariant.find(match['GameVariant']['ResourceId'])
         tr
           td
-            img.game-image src=GameBaseVariant.find(match['GameBaseVariantId']).iconUrl
-            = GameBaseVariant.find(match['GameBaseVariantId']).name
-          td Row #{index+1} Cell 2
-          td Row #{index+1} Cell 3
+            img.game-image src=base_variant.iconUrl
+            => base_variant.name
+            - if variant
+              small: em= variant.name if variant.name != base_variant.name
+            - else  
+              small: em= match['GameVariant']['ResourceId']
+          td= match['Players'].first['TotalKills']
+          td= match['Players'].first['TotalDeaths']
+          td= match['Players'].first['TotalAssists']
+          td= Date.parse(match['MatchCompletedDate']['ISO8601Date']).strftime('%b. %e, %I:%M %p (%A)')

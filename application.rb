@@ -1,7 +1,9 @@
 require 'sinatra'
 require 'sinatra/reloader' if development?
+require 'time'
 require './halo'
 require './game_base_variant'
+require './game_variant'
 require 'csv'
 require 'pry'
 
