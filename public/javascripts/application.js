@@ -4,10 +4,24 @@ var HaloApi = {
   },
   autoComplete: {
     init: function() {
-      var defaultPlayers = ["TheInternets", "EXPL0Sl0N", "TheBigConundrum", "TryCsy"];
-      $('.gamertag').on('keyup', function(){
-        console.log($(this))
+      $('.gamertag').on('keyup', function(e) {
+        if (e.which <= 90 && e.which >= 48) {
+          var gamerTags = findGamertag($(this).val());
+          if(gamerTags.length == 1) {
+            $(this).val(gamerTags[0]);
+          }
+        }
       });
+
+      function findGamertag(input) {
+        var defaultPlayers = ["TheInternets", "EXPL0Sl0N", "TheBigConundrum", "TryCsy"];
+        var regex = new RegExp(input.split('').join('\\w*').replace(/\W/, ""), 'i');
+        return defaultPlayers.filter(function(player) {
+          if (player.match(regex)) {
+            return player;
+          }
+        });
+      }
     }
   }
 }
