@@ -1,13 +1,13 @@
 require 'sinatra'
 require 'sinatra/reloader' if development?
 require './halo'
+require './game_base_variant'
 require 'csv'
 require 'pry'
 
 get '/' do
   gamer_tag = params[:gamertag] ||= 'TheInternets'
-  @data = Halo.get_last_match_for_player(gamer_tag)
-
+  @matches = Halo.get_last_match_for_player(gamer_tag)
   slim :index
 end
 

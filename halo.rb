@@ -4,18 +4,20 @@ require 'json'
 class Halo
   def self.get_last_match_for_player(player)
     url = "https://www.haloapi.com/stats/h5/players/#{player}/matches"
-    query = { count: 1 }
+    query = { count: 25 }
     response = make_request(url, query)
     data = JSON.parse(response.body)
 
     data['Results']
   end
 
-  def self.make_request(url, query)
+  def self.make_request(url, query=nil)
     key = '1f81e269a1c54e46a43ce766f35eccb0'
     uri = URI(url)
 
-    uri.query = URI.encode_www_form(query)
+    if query
+      uri.query = URI.encode_www_form(query)
+    end
 
     request = Net::HTTP::Get.new(uri.request_uri)
     request['Ocp-Apim-Subscription-Key'] = key
