@@ -53,22 +53,22 @@ class GameVariant
   ]
 
   def initialize(attrs = {})
-		attrs.each do |k, v|
-			self.send "#{k}=", v
-		end
-	end
+    attrs.each do |k, v|
+      self.send "#{k}=", v
+    end
+  end
 
-	def self.all
-		VARIANTS.collect do |method|
-			new method
-		end
-	end
+  def self.all
+    VARIANTS.collect do |method|
+      new method
+    end
+  end
 
-	def self.find_by_name(name)
-		all.select {|variant| variant.name == name}.first
-	end
+  def self.find_by_name(name)
+    all.select {|variant| variant.name == name}.first
+  end
 
   def self.find(id)
-		all.select {|variant| variant.id == id}.first
-	end
+    all.select {|variant| variant.id == id}.first
+  end
 end
